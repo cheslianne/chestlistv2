@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+@layer base {
+  :root,
+  [data-theme="blush"] {
+    --color-primary: #945366;
+    --color-primary-hover: #7D3F52;
+    --color-soft-accent: #F4B6C2;
+    --color-container: #FFD9E1;
+    --color-surface: #FFF8F8;
+    --color-surface-card: #FFFFFF;
+    --color-text: #2B1C20;
+    --color-muted: #7D686F;
+    --color-border: #F0D5DD;
+    --shadow-tint: rgba(148, 83, 102, 0.08);
+    --ring-focus: rgba(148, 83, 102, 0.35);
+  }
+
+  [data-theme="sage"] {
+    --color-primary: #52795D;
+    --color-primary-hover: #41624A;
+    --color-soft-accent: #B8DDB5;
+    --color-container: #D9EDD8;
+    --color-surface: #EFFDF1;
+    --color-surface-card: #FFFFFF;
+    --color-text: #1D3323;
+    --color-muted: #5B7260;
+    --color-border: #CFE4CE;
+    --shadow-tint: rgba(82, 121, 93, 0.09);
+    --ring-focus: rgba(82, 121, 93, 0.35);
+  }
+
+  [data-theme="sky"] {
+    --color-primary: #3B82F6;
+    --color-primary-hover: #2563EB;
+    --color-soft-accent: #BAE6FD;
+    --color-container: #DBEAFE;
+    --color-surface: #F0F7FF;
+    --color-surface-card: #FFFFFF;
+    --color-text: #1E3A5F;
+    --color-muted: #5B7494;
+    --color-border: #CFE0F5;
+    --shadow-tint: rgba(59, 130, 246, 0.09);
+    --ring-focus: rgba(59, 130, 246, 0.35);
+  }
+
+  [data-theme="lavender"] {
+    --color-primary: #8B5CF6;
+    --color-primary-hover: #7C3AED;
+    --color-soft-accent: #DDD6FE;
+    --color-container: #EDE9FE;
+    --color-surface: #FAF7FF;
+    --color-surface-card: #FFFFFF;
+    --color-text: #37285B;
+    --color-muted: #726291;
+    --color-border: #E2D9F7;
+    --shadow-tint: rgba(139, 92, 246, 0.09);
+    --ring-focus: rgba(139, 92, 246, 0.35);
+  }
+
+  * {
+    border-color: var(--color-border);
+    transition: background-color 400ms ease, border-color 400ms ease, color 400ms ease;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+/* Bullet-journal card shadow & border discipline */
+.chest-card {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 20px -2px var(--shadow-tint), 0 2px 6px -1px var(--shadow-tint);
+  border-radius: 20px;
+}
+
+.chest-input {
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background-color: #FFFFFF;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.chest-input:focus-visible {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--ring-focus);
+}
+
+.chest-button-primary {
+  border-radius: 12px;
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chest-button-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.chest-button-primary:active {
+  transform: translateY(0);
+}
+
+.chest-button-secondary {
+  border-radius: 12px;
+  background-color: var(--color-container);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chest-button-secondary:hover {
+  filter: brightness(0.97);
+}
+
+/* Tabular numbers for all currency and metrics */
+.tabular-numbers {
+  font-family: 'JetBrains Mono', monospace, ui-monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focus ring accessibility */
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Coin Drop Animation with short bounce */
+@keyframes coinDrop {
+  0% {
+    transform: translateY(-40px) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(48px) scale(0.96);
+  }
+  70% {
+    transform: translateY(38px) scale(0.98);
+  }
+  100% {
+    transform: translateY(72px) scale(0.7);
+    opacity: 0;
+  }
+}
+
+.animate-coin-drop {
+  animation: coinDrop 700ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Gentle pulse for off-pace chip */
+@keyframes pulseGentle {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(194, 105, 16, 0);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 12px 2px rgba(194, 105, 16, 0.18);
+  }
+}
+
+.pulse-gentle {
+  animation: pulseGentle 2.2s infinite ease-in-out;
+}
+
+/* PIN Error Shake Animation (300ms) */
+@keyframes pinShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-8px);
+  }
+  40%, 80% {
+    transform: translateX(8px);
+  }
+}
+
+.animate-pin-shake {
+  animation: pinShake 300ms ease-in-out;
+}
+
+/* Sticker Drop Bounce */
+@keyframes stickerBounce {
+  0% {
+    transform: scale(0.4) translateY(-16px);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.15) translateY(2px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-sticker-bounce {
+  animation: stickerBounce 400ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Vinyl Record Rotation (4s linear) */
+@keyframes vinylSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-vinyl {
+  animation: vinylSpin 4s linear infinite;
+}
+
+.spin-vinyl-paused {
+  animation: vinylSpin 4s linear infinite;
+  animation-play-state: paused;
+}
+
+/* Gentle bounce-fade for suggested category pill */
+@keyframes suggestionPop {
+  0% {
+    opacity: 0;
+    transform: translateY(4px) scale(0.95);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-1px) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-suggestion-pop {
+  animation: suggestionPop 260ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-coin-drop {
+    animation: none !important;
+  }
+  .animate-suggestion-pop {
+    animation: none !important;
+  }
+  .pulse-gentle {
+    animation: none !important;
+  }
+  .spin-vinyl {
+    animation: none !important;
+  }
+  .spin-vinyl-paused {
+    animation: none !important;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+

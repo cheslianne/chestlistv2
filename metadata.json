@@ -1,0 +1,8 @@
+{
+  "name": "Chestlist",
+  "description": "Minimalist pastel personal finance and life tracker for students and young professionals in the Philippines.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
